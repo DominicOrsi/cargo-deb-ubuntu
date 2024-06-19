@@ -4,21 +4,22 @@ description: 'Builds a statically linked .deb package, amd64, aarch64 musl, ubun
 branding:
   icon: 'package'
   color: 'orange'
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        target:
-          - 'x86_64-unknown-linux-musl'
-          - 'aarch64-unknown-linux-musl'
-
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Build .deb package
-        uses: docker://payshort/cargo-deb-ubuntu:main
-        with:
-          cmd: 'cargo deb --target=${{ matrix.target }}'
+inputs:
+  cmd1:
+    description: 'First build command'
+    required: true
+    default: 'cargo deb --target=x86_64-unknown-linux-musl'
+  cmd2:
+    description: 'Second build command'
+    required: true
+    default: 'cargo deb --target=aarch64-unknown-linux-musl'
+runs:
+  using: 'docker'
+  image: 'docker://payshort/cargo-deb-ubuntu:main'
+  entrypoint: '/bin/bash'
+  args:
+    - -c
+    - |
+      set -e
+      ${{ inputs.cmd1 }}
+      ${{ inputs.cmd2 }}
