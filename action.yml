@@ -14,6 +14,6 @@ inputs:
       - 'cargo deb --target=aarch64-unknown-linux-musl'
 runs:
   using: 'docker'
-  image: 'docker://payshort/cargo-deb-ubuntu:test'
+  image: 'docker://payshort/cargo-deb-ubuntu:main'
   args:
     - ${{ inputs.cmd }}
