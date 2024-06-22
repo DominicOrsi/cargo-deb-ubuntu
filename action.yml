@@ -18,8 +18,4 @@ runs:
   image: 'docker://payshort/cargo-deb-ubuntu:main'
   entrypoint: '/bin/bash'
   args:
-    - -c
-    - |
-      set -e
-      ${{ inputs.cmd1 }}
-      ${{ inputs.cmd2 }}
+    - ${{ inputs.cmd }}
