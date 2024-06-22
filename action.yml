@@ -16,6 +16,5 @@ inputs:
 runs:
   using: 'docker'
   image: 'docker://payshort/cargo-deb-ubuntu:main' # Need to update to use release docker image
-  entrypoint: '/bin/bash'
   args:
     - ${{ inputs.cmd }}
