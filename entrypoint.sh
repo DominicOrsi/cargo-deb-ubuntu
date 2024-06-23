@@ -11,5 +11,5 @@ cd $GITHUB_WORKSPACE
 # Run command
 sh -c "$*"
 chmod 0777 ./target
-# Move debain packages to root
+# Move debain packages to github workspace
 mv ./target/*/debian/* $GITHUB_WORKSPACE 
