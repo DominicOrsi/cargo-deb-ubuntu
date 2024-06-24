@@ -31,7 +31,7 @@ jobs:
         id: meta
         uses: docker/metadata-action@v5.5.1
         with:
-          images: payshort/cargo-deb-ubuntu
+          images: payshort/cargo-deb-ubuntu-amd64-musl
       
       - name: Build and push Docker image
         uses: docker/build-push-action@v6.0.1
